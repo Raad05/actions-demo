@@ -13,10 +13,10 @@ jobs:
       - name: Executing remote ssh commands using password
         uses: appleboy/ssh-action@v1.2.2
         with:
-          host: ${{ secrets.VM_IP }}
-          username: ${{ secrets.VM_USER }}
-          key: ${{ secrets.VM_SSH_KEY }}
-          port: ${{ secrets.VM_PORT }}
+          host: 10.234.88.47
+          username: ubuntu
+          key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPH/aXKbvs/nMfjoHKI4XzMP96ICZ3OLSrEeBmgUYHQ9 ashabulraad@gmail.com
+          port: 22
           # update the script later
           script: |
             cd ~/actions-demo/frontend
