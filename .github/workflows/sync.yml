@@ -1,17 +1,26 @@
-name: Sync
+name: Remote SSH
 
 on:
   push:
-    branches: [ "main" ]
-
-  workflow_dispatch:
+    branches:
+      - main
 
 jobs:
-  sync:
+  deploy:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
 
-      - name: Pull Changes
-        run: git pull
+    steps:
+      - name: Executing remote ssh commands using password
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.VM_IP }}
+          username: ${{ secrets.VM_USER }}
+          key: ${{ secrets.VM_SSH_KEY }}
+          port: ${{ secrets.VM_PORT }}
+          # update the script later
+          script: |
+            cd ~/actions-demo/frontend
+            echo "Pulling latest changes from repository"
+            git pull origin main
+            npm install
+            echo "Script executed successfully"
