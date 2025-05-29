@@ -25,5 +25,4 @@ jobs:
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             nvm use 22
             npm install
-            npm run dev
             echo "Script executed successfully"
